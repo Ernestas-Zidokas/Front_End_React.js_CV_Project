@@ -1,0 +1,32 @@
+.poop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  &--logo {
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  &--emoji {
+    position: absolute;
+    animation: poopmove 1s;
+    margin-left: 30px;
+    font-size: 30px;
+  }
+  &--clear {
+    margin-left: 30px;
+    cursor: pointer;
+  }
+}
+
+@keyframes poopmove {
+  from {
+    top: 100px;
+  }
+  to {
+    top: 150px;
+  }
+}
