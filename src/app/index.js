@@ -6,6 +6,14 @@ import './index.scss';
 
 const LANGUAGES = [{ name: 'English', code: 'en' }, { name: 'Lithuanian', code: 'lt' }];
 
+const randomStyle = () => {
+  return {
+    marginLeft: Math.floor(Math.random() * (50 - 5) + 5) + 'px',
+    top: Math.floor(Math.random() * (180 - 150) + 150) + 'px',
+    fontSize: Math.floor(Math.random() * (50 - 15) + 15) + 'px',
+  };
+};
+
 class App extends React.Component {
   state = {
     language: LANGUAGES[0].code,
@@ -14,8 +22,12 @@ class App extends React.Component {
 
   onClick = () => {
     this.setState({
-      poopArray: [...this.state.poopArray, '💩'],
+      poopArray: [...this.state.poopArray, { emoji: '💩', style: randomStyle() }],
     });
+  };
+
+  clear = () => {
+    this.setState({ poopArray: [] });
   };
 
   onChange = e => {
@@ -29,7 +41,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Poop items={poopItems} onClick={this.onClick} />
+        <Poop items={poopItems} onClick={this.onClick} onClear={this.clear} />
         <Header />
         <DropDown items={items} onChange={this.onChange} />
         <Main language={language} />
